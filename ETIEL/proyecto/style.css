@@ -1,0 +1,33 @@
+*{
+    text-transform: capitalize;
+}
+
+#name{
+    display: inline-flex;
+    margin: 1%;
+    justify-content: center;
+}
+
+#number{
+    display: inline-flex;
+    margin: 1%;
+    justify-content: center;
+}
+
+#discount{
+    display: inline-flex;   
+    margin: 1%;
+    justify-content: center;
+}
+
+.trafficlight{
+    width: 10%;
+}
+
+.clock{
+    width: 10%;
+}
+
+#van{
+    width: 10%;
+}
