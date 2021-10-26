@@ -7,47 +7,7 @@ this.row = row;
 this.colum = colum
 this.seats = [];
 
-//creating an array of arrays(seats)
-this.createSeats = function(){
-    for(var i = 0; i < this.row; i++){
-        this.seats[i] = []
-        
-        for(var j = 0; j < this.colum; j++){
-            this.seats[i][j] = Math.floor(Math.random()*2 );}
-        }
-    }
 
-// creating a  function to buy the seats
-this.buy = function(seatReserved){
-// creating a security method, if you input something that is not a number it fails and ask you again the number of seats
-    console.log(seatNumber);
-    let allRows = document.getElementsByTagName("td");                    
-    let row = Math.floor((seatReserved) / this.colum);                   
-    let col = seatNumber % this.colum;
-    if (this.seats[row][col] == 1){
-        let seatsBooked = seat.indexOf(seatReserved) }
-        if (index != -1) {
-            allRows[seatReserved].innerHTML = "<img src='../img/seat-green.png' alt='available seat' onclick='Film.buy(" + seatReserved + ")'><p>" + seatReserved + "</p>" //The seat returns to available state
-            this.seats[row][col] = 0;   //Now the seat is free
-            myPrice -= this.pricePerSeat; //Price updated
-            mySeats.splice(index, 1);   //If the seat number is taken by the same user, that seat now is removed from the array of selected seats
-            document.getElementById("result1").innerHTML = myPrice + "€ ";  //Price to the user updated
-            tempCad = "";
-            for (let i = 0; i < mySeats.length; i++) {
-                tempCad += mySeats[i] + ", ";
-            }
-            document.getElementById("result2").innerHTML = tempCad;
-        }
-        else {
-            alert("The seat " + seatNumber + " is taken!!\nPick another one!");
-        }
-                        
-
-        
-       
-    }
-
-    
 // painting the seats
 this.redOrGreen = function(){
     let seatsOfTheTheatre = 0;
@@ -70,6 +30,59 @@ this.redOrGreen = function(){
         }
     }
 }
+//creating an array of arrays(seats)
+this.createSeats = function(){
+    for(var i = 0; i < this.row; i++){
+        this.seats[i] = []
+        
+        for(var j = 0; j < this.colum; j++){
+            this.seats[i][j] = Math.floor(Math.random()*2 );}
+        }
+    }
+
+// creating a  function to buy the seats
+this.buy = function(seats1){
+// creating a security method, if you input something that is not a number it fails and ask you again the number of seats
+    console.log(seatNumber);
+    let allRows = document.getElementsByTagName("td");                    
+    let row = Math.floor((seats1) / this.colum);                   
+    let col = seatNumber % this.colum;
+    if (this.seats[row][col] == 1){
+        let seatsBooked = seat.indexOf(seats1) 
+        if (index != -1) {
+            allRows[seats1].innerHTML = "<img src='../img/seat-green.png' alt='available seat' onclick='Film.buy(" + seats1 + ")'><p>" + seats1 + "</p>" //The seat returns to available state
+            this.seats[row][col] = 0;   //Now the seat is free
+            totalPrice -= this.pricePerSeat; //Price updated
+            seat.splice(index, 1);   //If the seat number is taken by the same user, that seat now is removed from the array of selected seats
+            document.getElementById("result1").innerHTML = totalPrice + "€ ";  //Price to the user updated
+            tempCad = "";
+            for (let i = 0; i < seat.length; i++) {
+                tempCad += Seats[i] + ", ";
+            }
+            document.getElementById("result2").innerHTML = tempCad;
+        }
+        else {
+            alert("The seat " + seats1 + " is taken!!\nPick another one!");
+        }
+        
+    }
+
+    else if (this.seats[row][col] == 0){
+        this.seats[row][col] = 1;
+        allRows[seatNumber].innerHTML = "<img src='../img/seat0.PNG' alt='Red not available seat' onclick='myFilm.buy(" + seatNumber + ")'><p>" + seatNumber + "</p>";
+        myPrice += this.pricePerSeat;
+        document.getElementById("result1").innerHTML = myPrice + "€ ";
+        mySeats.push(seatNumber);
+        if (mySeats.length != 1) {  //If only for formatting purposes
+            document.getElementById("result2").innerHTML += ", " + mySeats[mySeats.length - 1];
+        }
+        else {
+            document.getElementById("result2").innerHTML += mySeats[mySeats.length - 1];                
+        }
+    }
+
+
+
 
 // declaring the objects
 function blackWidow (){ 
@@ -98,4 +111,4 @@ function spaceJam (){
    spaceJamFilm.buy();
 
 }
-
+}
