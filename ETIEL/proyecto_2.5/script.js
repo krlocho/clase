@@ -20,50 +20,57 @@ this.createSeats = function(){
 
         
 // painting the seats
-this.redOrGreen = function(){
-
-    let seatsOfTheTheatre = 0;
-    for(let i = 0; i < this.row; i++) {
-        document.write("<tr>");
-        for(let j = 0; j < this.colum; j++) {
-        if (this.seats[i][j] == 0) {
-                
-                   document.write("<td id='[i][j]'><img class=seat src='../img/seat-green.png' onclick='blackWidowFilm.changeState(this.id)'  alt='Available seat'><p>" + seatsOfTheTheatre + "</p></td>");
-                    seatsOfTheTheatre++;
+this.buy = function(seatNumber){
+    console.log(seatNumber);
+    let allRows = document.getElementsByTagName("td");
+    var row = Math.floor((seatNumber) / this.colum);
+    var col = seatNumber % this.colum;
+    if (this.seats[row][col] == 1){
+        let index = mySeats.indexOf(seatNumber)
+        if (index != -1) {
+            allRows[seatNumber].innerHTML = "<img src='../img/seat-green.png' alt='Green available seat' onclick='myFilm.buy(" + seatNumber + ")'><p>" + seatNumber + "</p>" //The seat returns to available state
+            this.seats[row][col] = 0;   //Now the seat is free
+            myPrice -= this.price; //Price updated
+            mySeats.splice(index, 1);   //If the seat number is taken by the same user, that seat now is removed from the array of selected seats
+            document.getElementById("result1").innerHTML = myPrice + "€ ";  //Price to the user updated
+            tempCad = "";
+            for (let i = 0; i < mySeats.length; i++) {
+                tempCad += mySeats[i] + ", ";
             }
-            else if (this.seats[i][j] == 1) {
+            document.getElementById("result2").innerHTML = tempCad;
+        }
+        else {
+            alert("The seat " + seatNumber + " is taken!!\nPick another one!");
+        }
 
-                    document.write("<td><img src='../img/seat-red.png' alt='Red not available seat'><p>" + seatsOfTheTheatre + "</p></td>");
-                    seatsOfTheTheatre++;
-                }
-            }
-            document.write("</tr></div>");
-            document.write("</div>")
+    } 
+    
+    else if (this.seats[row][col] == 0){
+        this.seats[row][col] = 1;
+        allRows[seatNumber].innerHTML = "<img src='../img/seat-red.png' alt='Red not available seat' onclick='myFilm.buy(" + seatNumber + ")'><p>" + seatNumber + "</p>";
+        myPrice += this.price;
+        document.getElementById("result1").innerHTML = myPrice + "€ ";
+        mySeats.push(seatNumber);
+        if (mySeats.length != 1) {  //If only for formatting purposes
+            document.getElementById("result2").innerHTML += ", " + mySeats[mySeats.length - 1];
+        }
+        else {
+            document.getElementById("result2").innerHTML += mySeats[mySeats.length - 1];                
         }
     }
-
-
-    function changeState(clicked_id) {
-
-        var Image_Id = document.getElementById(clicked_id);
-                    if (Image_Id.src.match("img/seat-green.png")) {
-                      Image_Id.src = "img/seat-red.png";
-                      console.log('greeen '+clicked_id)}
-        
-        }
+}
 }
 
 
 
 // declaring the objects
-function blackWidow (){ 
+
 
     blackWidowFilm = new film("Black Widow", 10, 3, 13)
-    blackWidowFilm.createSeats();
-    blackWidowFilm.redOrGreen(); 
+  
       
 
-}
+
 function shangChi (){ 
 
     shangChiFilm = new film("Shang Chi ", 7, 4, 11)
@@ -78,4 +85,65 @@ function spaceJam (){
     spaceJamFilm.redOrGreen();
 
     
+}
+
+myFilm = new film('null', 'null', 0, 0, 0); 
+
+var myPrice = 0;    // Total price of the tickets
+var mySeats = [];   // Array of the client is buying
+
+function saveValues(cad1) { //The seat array is saved depending on which movie page we are
+    console.log(cad1);
+    switch(cad1) {
+        case "blackwidow":
+            blackWidowFilm = myFilm;
+            sessionStorage.blackwidowSeatArray = JSON.stringify(blackwidowFilm.seats);
+            break;
+    }}
+
+function aMovie(cad){
+    let cad1 = cad;
+    switch(cad) {
+        case "blackwidow":
+            if (sessionStorage.blackwidowSeatArray != undefined) {
+                blackWidowFilm.seats = JSON.parse(sessionStorage.blackwidowSeatArray);
+            }
+            else if (blackWidowFilm.seats.length == 0){
+                blackWidowFilm.createSeats();
+            }
+            myFilm = blackWidowFilm;
+            break;
+        
+            default:
+                alert('The movie name is invalid!!');
+        }
+document.write("<div id='price'>Total cost: </div>");
+document.write("<div id='result1'>0€</div>");
+document.write("<div id='yourSeats'>Your seats are: </div>");
+document.write("<div id='result2'></div>");
+document.write("<button id='buy' onclick='saveValues(" + JSON.stringify(cad) + ")'>Buy</button>");
+document.write("<button id='reset' onclick='resetValues()'>Reset</button>")
+
+document.write( "<div class='cont'>");
+
+document.write("<table>");
+let seatsOfTheTheatre = 0;
+for(let i = 0; i < myFilm.row; i++) {
+    document.write("<tr>");
+    for(let j = 0; j < myFilm.colum; j++) {
+        if (myFilm.seats[i][j] == 0) {
+                document.write("<td class='spacer'><img src='../img/seat-green.PNG' alt='Green available seat' onclick='myFilm.buy(" + seatsOfTheTheatre + ")'><p>" + seatsOfTheTheatre + "</p></td>");
+                seatsOfTheTheatre++;
+            }
+        
+        else if (myFilm.seats[i][j] == 1) {
+          
+                document.write("<td><img src='../img/seat-red.PNG' alt='Red not available seat' onclick='myFilm.buy(" + seatsOfTheTheatre + ")'><p>" + seatsOfTheTheatre + "</p></td>");
+                seatsOfTheTheatre++;
+            }
+        }
+       
+    }
+    document.write("</tr>");
+
 }
