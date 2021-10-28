@@ -30,7 +30,7 @@ this.buy = function(seatNumber){
         if (index != -1) {
             allRows[seatNumber].innerHTML = "<img src='../img/seat-green.png' alt='Green available seat' onclick='myFilm.buy(" + seatNumber + ")'><p>" + seatNumber + "</p>" //The seat returns to available state
             this.seats[row][col] = 0;   //Now the seat is free
-            myPrice -= this.price; //Price updated
+            myPrice = this.price; //Price updated
             mySeats.splice(index, 1);   //If the seat number is taken by the same user, that seat now is removed from the array of selected seats
             document.getElementById("result1").innerHTML = myPrice + "€ ";  //Price to the user updated
             tempCad = "";
@@ -66,40 +66,20 @@ this.buy = function(seatNumber){
 // declaring the objects
 
 
-    blackWidowFilm = new film("Black Widow", 10, 3, 13)
+blackWidowFilm = new film("Black Widow", 10, 3, 13)
   
-      
+
+shangChiFilm = new film("Shang Chi ", 7, 4, 11)
 
 
-function shangChi (){ 
-
-    shangChiFilm = new film("Shang Chi ", 7, 4, 11)
-    shangChiFilm.createSeats();
-    shangChiFilm.redOrGreen(); 
-}
-
-function spaceJam (){ 
-
-    spaceJamFilm = new film("Space Jam  ", 12, 3, 9)
-    spaceJamFilm.createSeats();
-    spaceJamFilm.redOrGreen();
-
-    
-}
+spaceJamFilm = new film("Space Jam  ", 12, 3, 9)
+ 
 
 myFilm = new film('null', 'null', 0, 0, 0); 
 
 var myPrice = 0;    // Total price of the tickets
 var mySeats = [];   // Array of the client is buying
 
-function saveValues(cad1) { //The seat array is saved depending on which movie page we are
-    console.log(cad1);
-    switch(cad1) {
-        case "blackwidow":
-            blackWidowFilm = myFilm;
-            sessionStorage.blackwidowSeatArray = JSON.stringify(blackwidowFilm.seats);
-            break;
-    }}
 
 function aMovie(cad){
     let cad1 = cad;
@@ -112,6 +92,16 @@ function aMovie(cad){
                 blackWidowFilm.createSeats();
             }
             myFilm = blackWidowFilm;
+            break;
+
+            case "shangchi":
+            if (sessionStorage.shangchiSeatArray != undefined) {
+                shangChiFilm.seats = JSON.parse(sessionStorage.shanChiSeatArray);
+            }
+            else if (shangChiFilm.seats.length == 0){
+                shangChiFilm.createSeats();
+            }
+            myFilm = shangChiFilm;
             break;
         
             default:
