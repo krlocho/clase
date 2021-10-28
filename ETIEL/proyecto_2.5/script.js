@@ -28,7 +28,7 @@ this.redOrGreen = function(){
         for(let j = 0; j < this.colum; j++) {
         if (this.seats[i][j] == 0) {
                 
-                   document.write("<td id='[i][j]'><img class=seat src='../img/seat-green.png' onclick='blackWidowFilm.change()'  alt='Available seat'><p>" + seatsOfTheTheatre + "</p></td>");
+                   document.write("<td id='[i][j]'><img class=seat src='../img/seat-green.png' onclick='blackWidowFilm.changeState(this.id)'  alt='Available seat'><p>" + seatsOfTheTheatre + "</p></td>");
                     seatsOfTheTheatre++;
             }
             else if (this.seats[i][j] == 1) {
@@ -41,15 +41,18 @@ this.redOrGreen = function(){
             document.write("</div>")
         }
     }
-this.change = function(){
-    var image = document.getElementsByClassName("seat");
-    if (image.src.match("seat-green.png")){
-        image.src = "seat-red.png"
-    }
-}
+
+
+    function changeState(clicked_id) {
+
+        var Image_Id = document.getElementById(clicked_id);
+                    if (Image_Id.src.match("img/seat-green.png")) {
+                      Image_Id.src = "img/seat-red.png";
+                      console.log('greeen '+clicked_id)}
         
-    
+        }
 }
+
 
 
 // declaring the objects
