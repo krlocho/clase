@@ -28,7 +28,7 @@ this.redOrGreen = function(){
         for(let j = 0; j < this.colum; j++) {
         if (this.seats[i][j] == 0) {
                 
-                   document.write("<td><img src='../img/seat-green.png' alt='Available seat'><p>" + seatsOfTheTheatre + "</p></td>");
+                   document.write("<td id='[i][j]'><img class=seat src='../img/seat-green.png' onclick='blackWidowFilm.change()'  alt='Available seat'><p>" + seatsOfTheTheatre + "</p></td>");
                     seatsOfTheTheatre++;
             }
             else if (this.seats[i][j] == 1) {
@@ -41,7 +41,16 @@ this.redOrGreen = function(){
             document.write("</div>")
         }
     }
+this.change = function(){
+    var image = document.getElementsByClassName("seat");
+    if (image.src.match("seat-green.png")){
+        image.src = "seat-red.png"
+    }
 }
+        
+    
+}
+
 
 // declaring the objects
 function blackWidow (){ 
