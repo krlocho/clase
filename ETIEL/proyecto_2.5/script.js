@@ -83,33 +83,29 @@ var seatsToBuy = [];
 
 function printMovie(filmSelected){
     let filmSelected1 = filmSelected;
-    switch(filmSelected) {
-        case "blackwidow":
-     
-            blackWidowFilm.createSeats();
+    if (filmSelected = "blackwidow"){
+
+        blackWidowFilm.createSeats();
             
-            exampleFilm = blackWidowFilm;
-            break;
+        exampleFilm = blackWidowFilm;}
+        
+    else if (filmSelected = "shanchi"){
 
-            case "shangchi":
-          
-            shangChiFilm.createSeats()
-            exampleFilm = shangChiFilm;
-            break;
+        shangChiFilm.createSeats();
+        exampleFilm = shangChiFilm;}
+            
 
-            case "spacejam":
+    else if(filmSelected = "spacejam") {
          
             spaceJamFilm.createSeats();
-            exampleFilm = spaceJamFilm;
-            break;
+            exampleFilm = spaceJamFilm;}
     
-        }
-document.write("<div id='price'>Price of the seats: </div>");
-document.write("<div id='totalprice'>0€</div>");
-document.write("<div id='yourSeats'>Your selected the seats: </div>");
-document.write("<div id='seatsBought'></div>");
+    else{
+        console.log ("Invalid film!!")
+    }
+document.write("<div id='price'>Price of the seats: </div><div id='totalprice'>0€</div>");
+document.write("<div id='yourSeats'>Your selected the seats: </div> <div id='seatsBought'> + </div>");
 document.write("<input type='button' onclick='location.reload();' value='Reset' />")
-document.write( "<div >");
 
 document.write("<table>");
 let seatsOfTheTheatre = 0;
@@ -130,5 +126,6 @@ for(let i = 0; i < exampleFilm.row; i++) {
        
     }
     document.write("</tr>");
+    document.write("</table>")
 
 }
