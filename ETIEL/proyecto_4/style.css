@@ -23,8 +23,11 @@
     gap: 2%;
   }
   #results-zone{
+
+    margin-top: 1em;
     display: grid;
     justify-content: space-around;
     justify-items: center;
    
   }
+
