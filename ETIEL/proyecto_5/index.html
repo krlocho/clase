@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <script src="script.js"></script>
     <h1>My filesystem</h1>
     <form action="">
         <div id="parent">
@@ -17,21 +18,22 @@
                 <label>/
                     <input type="checkbox" checked />
                 </label>
-                <div class="addItem">+</div>
+                <div class="addItem"></div>
                 <br>
                 <div class="folderContent">
                     <div class="folder" id="wipeout">
                         <label>wipe out
                             <input type="checkbox" checked />
                         </label>
-                        <div class="addItem"> + </div>
+                        
                         <div class="eraseItem"> x </div>
+                        <div class="addItem">&nbsp</div>
                     </div>
                     <div class="folderContent">
-                        <div class="file">bradley-thunderbolt <div class="eraseItem">x</div>
+                        <div class="file">bradley-thunderbolt.png <div class="eraseItem">x</div>
                         </div>
                     </div>
-                    <div class="file">Etiel.js<div class="eraseItem"></div>
+                    <div class="file">Etiel.js<div class="eraseItem">x</div>
                     </div>
                     <div class="folder"></div>
 
@@ -39,6 +41,7 @@
                 </div>
             </div>
     </form>
+   
 </body>
 
 </html>
