@@ -52,7 +52,7 @@ function resetValues() {
   minutes = 0;
 
 
-  document.getElementById("movements").innerHTML = "Moves: " + counter;
+  document.getElementById("movements").innerHTML = "Moves: " + counter ;
 
   document.getElementById("extra").innerHTML = " ";
 
@@ -68,7 +68,10 @@ function shuffle() {
   timer();
   myTime = setInterval(timer, 20)
 
- /*  //coment this to start without shuffling 
+  //comment this to start without shuffling 
+
+
+
   //access to each cell of the 3x3 grid
   for (var row = 1; row <= 3; row++) { //For each row of the 3x3 grid
     for (var column = 1; column <= 3; column++) { //For each column in this row
@@ -78,7 +81,7 @@ function shuffle() {
 
       movePics("cell" + row + column, "cell" + row2 + column2); //Swap the look & feel of both cells
     }
-  } */
+  }  
 }
 
 
@@ -90,7 +93,7 @@ function clickTile(row, column) {
   var moves = document.getElementById("movements").innerHTML = "Moves: " + counter;
 
   if (security >= 1) {
-    if (tile != "tile9") {
+    if (tile != "tile9") { 
       //Checking if white tile on the right
       if (column < 3) {
         if (document.getElementById("cell" + row + (column + 1)).className == "tile9") {
