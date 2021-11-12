@@ -25,3 +25,11 @@ body{background-color: #0D6973;
     background-color: #197362;
     border: 20px solid #197362;
     border-radius:10px ;}
+
+    .delete{
+        float: right;
+        
+        width: 1em;
+        
+        cursor: pointer;
+        color: white;}
