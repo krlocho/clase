@@ -10,24 +10,38 @@
 </head>
 
 <body>
-    
+
     <h1>My filesystem</h1>
     <form id="searchBar">
-        <input type="text" placeholder="Search" >
+        <input type="text" placeholder="Search">
     </form>
-     <div id="parent">/
-         <ul class="folderContent" >
-             <li><span class="name">Wipe Out</span>
-                 <ul class="folderContent">
-                     <li><span>Thunderbolt.pdf</span></li>
-                     <li><span>Channel island.pdf</span></li>
-                 </ul>
-             </li>
-             <li> <span>etiel.js</span></li>
+    <div id="parent">/
+        <ul class="folderContent">
+            <li><span>Wipe Out</span>
+                <ul class="folderContent">
+                    <li>
+                        <span>Thunderbolt.pdf</span>
+                        <img class="delete" src="img/delete.png" alt="">
+                    </li>
+                    <li>
+                        <span>Channel island.pdf</span>
+                        <img class="delete" src="img/delete.png" alt="">
+                    </li>
+                    <li><span>Windsurf</span>
+                        <img class="delete" src="img/delete.png" alt="">
+                        <ul>
+                            <li><span id = "piranha">piranha.pdf</span>
+                                <img class="delete" src="img/delete.png" alt="">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li> <span>etiel.js</span></li>
 
-         </ul>
-     </div>
-     
+        </ul>
+    </div>
+
 
     <script src="script.js"></script>
 </body>
