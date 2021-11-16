@@ -1,35 +1,49 @@
-.eraseItem{
-    float:right;
-    
+.eraseItem {
+    float: right;
+
     display: inline;
-     ;
+    ;
 }
 
-.addItem{
+.addItem {
     display: inline;
-    float:right;
-    
+    float: right;
+
 }
 
 
-.folderContent{
+.folderContent {
     margin-left: 3%;
 }
 
-body{background-color: #0D6973;
+body {
+    background-color: #0D6973;
     color: #EBF1F2;
-    margin:5% 10% 5% 10% ;
+    margin: 5% 10% 5% 10%;
 }
-#parent{
+
+#parent {
     width: 70%;
     background-color: #197362;
     border: 20px solid #197362;
-    border-radius:10px ;}
+    border-radius: 10px;
+}
 
-    .delete{
-        float: right;
-        
-        width: 1em;
-        
-        cursor: pointer;
-        color: white;}
+.delete {
+    float: right;
+    width: 1em;
+    cursor: pointer;
+    color: white;
+}
+
+
+.add {
+    float: right;
+    width: 1em;
+    cursor: pointer;
+    color: white;
+}
+
+ul {
+    list-style-type: none;
+}
