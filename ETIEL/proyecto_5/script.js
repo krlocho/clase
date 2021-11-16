@@ -1,16 +1,17 @@
 const list = document.querySelector('ul');
-const addForm=document.forms["add-ex"];
+const addForm = document.forms["add-ex"];
+
 
 
 // filter files
 const searchBar = document.forms['searchBar'].querySelector('input');
-searchBar.addEventListener('keyup',(e)=>{// FAT ARROW FUNCTION
-  const term = e.target.value.toLowerCase();// to insure matches
+searchBar.addEventListener('keyup', (e) => { // FAT ARROW FUNCTION
+  const term = e.target.value.toLowerCase(); // to insure matches
   const files = list.getElementsByTagName('li');
-    
-  Array.from(files).forEach(function (exer){ //FOR EACH instead of for loop
+
+  Array.from(files).forEach(function (exer) { //FOR EACH instead of for loop
     const title = exer.textContent;
-    if(title.toLowerCase().indexOf(term) == -1){ //-1 means not present
+    if (title.toLowerCase().indexOf(term) == -1) { //-1 means not present
       exer.style.display = 'none';
     } else {
       exer.style.display = 'block';
@@ -21,39 +22,53 @@ searchBar.addEventListener('keyup',(e)=>{// FAT ARROW FUNCTION
 
 
 // delete exercises
-list.addEventListener('click', function(e) {
-  if(e.target.className == 'delete'){
+list.addEventListener('click', function (e) {
+  if (e.target.className == 'delete') {
     const li = e.target.parentElement;
-    if (li.className = "archivo"){
-    li.parentNode.removeChild(li);} //removes the element
-   //li.setAttribute ('style', 'display: none');//Hides the element 
-  // li.style.display="none"; 
-    //https://www.w3schools.com/jsref/prop_style_display.asp
+    console.log(e.target.parentElement.parentElement)
+  
+     li.parentNode.removeChild(li);
+    
   }
 });
 
 
-addForm.querySelector("button").addEventListener('click', function(e){
- e.preventDefault();//https://www.w3schools.com/tags/att_button_type.asp
+
+function a (){
+addForm.querySelector("btton").addEventListener('click', function (e) {
+  e.preventDefault(); //https://www.w3schools.com/tags/att_button_type.asp
 
   // create elements
   const value = addForm.querySelector('input[type="text"]').value;
   const li = document.createElement('li');
-  const ExName = document.createElement('span');
-  const deleteBtn = document.createElement('span');
+  li.innerHTML = value + '<img class="delete" src="img/delete.png" alt=""></img>';
 
-  // add text content
-  ExName.textContent = value;
-  deleteBtn.textContent = 'delete';
-  
-    // add classes
-  ExName.classList.add('name');
-  deleteBtn.classList.add('delete');
+
 
 
   // append to DOM
   e.target.parentElement.parentElement.appendChild(li);
-  e.target.parentElement.parentElement.appendChild(ExName);
-  e.target.parentElement.parentElement.appendChild(deleteBtn);
- 
-  });
+
+});
+}
+list.addEventListener('click', function (e) {
+  if (e.target.className == 'add') {
+    const li = e.target.parentElement;
+    const form = document.createElement("form")
+    form.classList.add( "add-ex")
+    const ate = '<input type="text" placeholder="Add an exercise..." /><button>Add</button>'
+    const addText = document.createElement("input") ;
+    const addButton = document.createElement ("button");
+    
+    console.log(e.target.parentElement.parentElement)
+    addButton.innerHTML = "ADD"
+    addButton.
+    addText.setAttribute("type", "text");
+  
+     li.appendChild(addText);
+     li.appendChild(addButton);
+
+     a()
+  }
+});
+
