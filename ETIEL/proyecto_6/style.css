@@ -1,0 +1,72 @@
+@import url(https://fonts.google.com/specimen/Shippori+Antique);
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    transition: .2s;
+    font-family: 'Shippori Antique', sans-serif;
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    margin: 0 10px;
+
+}
+.textcontainer{ display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 140%;
+    
+}
+.keyboard{
+    max-width: 1008px;
+    width: 100%;
+    background-color: #D95E52;
+    overflow: hidden;
+    position: relative;
+}
+.row{
+    display: flex;
+}
+.keys, .tab, .mayus, .shift, .ctrl, .fn, .win, .alt, .altgr, .space, .enter, .backspace{
+    width: 60px;
+    height: 60px;
+    background-color: #D9BDAD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4px;
+    transition: .2s;
+}
+.backspace{
+    width: 120px;
+}
+.tab{
+    width: 100px;
+}
+.mayus{width: 160px;}
+.enter{width: 120px;}
+.shift{width: 130px;}
+.space{ max-width: 600px;
+width: 100%;}
+
+.text{
+    max-width: 1008px;
+    width: 100%;
+    height: 90px;
+    margin-bottom: 30px;
+    border: none;
+    outline: none;
+    font-size: 26px;
+    background-color: #f7f7f7;
+    padding-left: 10px;
+    transition: .2s;
+}
