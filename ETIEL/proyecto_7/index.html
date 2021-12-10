@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>New User Signup</h1>
+    <form>
+
+        <input type="text" name="username" placeholder="username">
+        <p>Username must be and contain 5 - 12 characters</p>
+
+        <input type="text" name="sname" id="sname" maxlength="30" placeholder="Surname">
+        <p>Not valid surname</p>
+
+        <input type="text" name="dni" placeholder="DNI">
+        <p>Must be a valid DNI</p>
+
+        <input type="text" name="bdate" id="bdate" placeholder="Birthday">
+        <p> Date must be day/month/year </p>
+
+        <input type="text" name="pcode" id="pcode" placeholder="Postal code">
+        <p>Introduce a valid postal code</p>
+
+        <input type="text" name="email" id="email" placeholder="email">
+        <p>Introduce a valid postal code</p>
+
+        <input type="text" name="number" id="number" maxlength="9" placeholder="phone">
+        <p>Does not start with spanish prefix</p>
+
+        <input type="text" name="iban" id="iban" placeholder="Iban" maxlength="20">
+        <p>Wrong format</p>
+
+        <input type="password" name="passwd" id="passwd" maxlength="16" placeholder="Password">
+        <p>Must be 8-16 char long and contain Uppercase letters, numbers and special characters</p>
+
+        <input type="password"  name="passwd1" id="passwd1" placeholder="Repeat password">
+        <p>Password does not match</p>
+
+        <input type="text"  name="ccard" id="ccard" placeholder="Credit card" maxlength="16">
+        <p>Must contain 16 numbers</p>
+
+        <button id='send' type="submit" class='border-2 p-1 mr-3 rounded-lg border-black bg-green-300 hover:bg-green-500'>Send</button>
+        <button id='retrieve' class='border-2 p-1 ml-3 rounded-lg border-black bg-yellow-500 hover:bg-yellow-600'>Retrieve</button>
+
+    </form>
+    <script src="script.js"></script>
+</body>
+
+</html>
