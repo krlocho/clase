@@ -31,7 +31,7 @@ var film = function (name, price, row, colum) {
         if (this.seats[row][col] == 1) {
             let index = seatsToBuy.indexOf(seatNumber) //this gives youu the index of the seat
             if (index != -1) {
-                $('td') //The seat returns to available state
+                $('td > img').html() //The seat returns to available state
                 this.seats[row][col] = 0;   //empty the seat
                 totalPrice -= this.price;
                 seatsToBuy.splice(index, 1);   //If the seat number is taken by the same user, that seat now is removed from the array of selected seats
